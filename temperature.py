@@ -41,8 +41,10 @@ while True:
 			GPIO.output(BLUE_LED, GPIO.HIGH)
 		loops += 1
 
+		#Loops take around 3 seconds
 		seconds = loops * 3
 
+		#make lists for data in the format of Seconds, Celsius, and Fahrenheit
 		seconds_data.append(seconds)
 		celsius_data.append(celsius)
 		fahrenheit_data.append(fahrenheit)
@@ -64,6 +66,8 @@ while True:
 			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
 			writer.writeheader()
+			
+			#write every piece of data in order with a for loop
 			for l in range(len(seconds_data)):
 				writer.writerow({'Seconds': seconds_data[l], 'Celsius': celsius_data[l], 'Fahrenheit': fahrenheit_data[l]})
 
